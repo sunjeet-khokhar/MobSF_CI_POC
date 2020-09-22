@@ -1,22 +1,21 @@
 version: 2
 jobs:
   build:
-    docker:
+    machine: true
       # specify the version you desire here
-      - image: opensecurity/mobile-security-framework-mobsf
+      #- image: opensecurity/mobile-security-framework-mobsf
+      image: ubuntu-1604:202007-01
 
     working_directory: ~/repo
 
     steps:
       - checkout 
-      - setup_remote_docker
+      #- setup_remote_docker
       # run commands!
-      - run:
-          name: Install Docker client
-          command: apk add docker-cli
       - run: pwd
       - run: ls
       #- run: curl --help
       - run: echo "MobSF_Key=$MobSF_Key" > env.list
+      - run: docker pull opensecurity/mobile-security-framework-mobsf
       - run: docker run -it --env-file ./env.list -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
 

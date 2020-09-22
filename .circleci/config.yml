@@ -36,7 +36,6 @@ jobs:
       - run: ls
       - run:
          command: docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
-         background: true
       - run: ls
       #- run: curl -F '~/apks/pivaa.apk' http://localhost:8000/api/v1/upload -H "Authorization:$MobSF_Key"
 

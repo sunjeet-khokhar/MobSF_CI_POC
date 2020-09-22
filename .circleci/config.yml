@@ -18,4 +18,5 @@ jobs:
       - run: echo "MobSF_Key=$MobSF_Key" > env.list
       - run: docker pull opensecurity/mobile-security-framework-mobsf
       - run: docker run -it --env-file ./env.list -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+      - run: curl -F '~/apks/pivaa.apk' http://localhost:8000/api/v1/upload -H "Authorization:$MobSF_Key"
 

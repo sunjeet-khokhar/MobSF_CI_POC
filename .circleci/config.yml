@@ -12,4 +12,7 @@ jobs:
       # run commands!
       - run: pwd
       - run: ls
-      - run: curl --help
+      #- run: curl --help
+      - run: echo "MobSF_Key=$MobSF_Key" > env.list
+      - run: docker run -it --env-file ./env.list -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+
